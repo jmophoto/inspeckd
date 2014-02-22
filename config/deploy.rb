@@ -20,10 +20,11 @@ namespace :deploy do
     desc "#{command} unicorn server"
     task command do
       on roles(:app), in: :sequence, wait: 5 do
-        run "/etc/init.d/unicorn_#{application} #{command}"
+        execute "service unicorn_inspeckd restart"
       end
     end
   end
+  after "deploy", "deploy:restart"
 
   task :setup_config do
     on roles(:app), in: :sequence, wait: 5 do
