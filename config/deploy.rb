@@ -30,9 +30,9 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/myinventory"
       sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_myinventory"
-      sudo "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
-      sudo "ln -nfs #{shared_path}/config/aws.yml #{current_path}/config/aws.yml"
-      sudo "ln -nfs #{shared_path}/config/braintree.rb #{current_path}/config/braintree.rb"
+      sudo "ln -fs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+      sudo "ln -fs #{shared_path}/config/aws.yml #{current_path}/config/aws.yml"
+      sudo "ln -fs #{shared_path}/config/braintree.rb #{current_path}/config/braintree.rb"
     end
   end
   after "deploy:check", "deploy:setup_config"
