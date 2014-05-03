@@ -3,7 +3,7 @@ lock '3.1.0'
 
 set :application, 'myinventory'
 set :repo_url, 'git@github.com:jmophoto/inspeckd.git'
-set :branch, 'myinventory'
+set :branch, 'mi-droplet'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
